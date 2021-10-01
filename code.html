@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Vic Manuel Ortiz</title>
+    <title>REVERSE: A Coding Project By Vic Manuel Ortiz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,15 +15,18 @@
 
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/prism.css">
+    <link rel="icon" href="img/favicon.ico">
+
 </head>
 
 <body class="d-flex flex-column h-100">
     <!-- nav section -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#"><img src="img/Vic manuel.png" width="36" height="36"
+                    class="d-inline-block align-text-top"> REVERSE</a> <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -38,11 +41,11 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/vicmo616/Reverse">Git Repo</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -50,44 +53,111 @@
     <!-- main section -->
     <main class="flex-shrink-0">
         <div class="container px-5 py-5 mt-5">
-            <h2 class="border-1 border-bottom bottom-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom bottom-dark">The Code for REVERSE</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //call hello world
-                            function HelloWorld() {
-                                alert("hello world");
-                            } 
+                            //get string from the page
+                            //controller function
+                            function getValue(){
+                                
+                                document.getElementById("alert").classList.add("invisible");
+                               
+                                let userString = document.getElementById("userString").value;
+                                
+                                let revString = reverseString(userString);
+                                
+                                displayString(revString);
+                            }
+                            
+                            //reverse the string
+                            //logic function
+                            function reverseString(userString){
+                                let revString = [];
+                            
+                                //reverse a string using a for loop
+                                for (let index = userString.length -1 ; index >= 0; index--) {
+                                    revString += userString[index];
+                                    
+                                }
+                                return revString;
+                            }
+                            
+                            //display reversed string to the page
+                            //view function
+                            function displayString(revString){
+                                //write message to the page
+                                document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`;
+                                //show the alert box
+                                document.getElementById("alert").classList.remove("invisible");
+                            }
+                            
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello world</h5>
-                    <p>Hello world is a function that displays an alert with a message of hello world.</p>
+                    <p>The Code Is Structured In Three Functions</p>
+                    <h5>getValue</h5>
+                    <p>getValue accepts(gets) the user input from the page.
+                        It utilizes <strong>getElementById</strong> to pull the values from the page.
+                        It then passes the value(s) to the reverseString function.
+                        The function <strong>reverseString</strong> returns an array of values and passes that array to
+                        the <strong>displayString</strong> function.
+                        Utilizing again <strong>getElementById</strong> grabbing the Id of "alert" and adding the
+                        invisible class to its classList, we will be undoing this later in the displayString function
+                        to show the alert message that this is associated with which is now currently hidden as a result
+                        of adding the invisible class.
+                    </p>
+                    <h5>reverseString</h5>
+                    <p>
+                        reverseString takes in one parameter being userString, a variable established in the
+                        <strong>getValue</strong> function where we collect the user input of a string.
+                        We also create a variable (revString) that holds an array.
+                        A for loop is used to generate the user's inputted string and reverse it back to the page by
+                        use of decrementing it's length from the last index while each decrement of the userString is
+                        being fed to the empty array of revString as the loop makes its way to the start of the string's
+                        index.
+                        The <strong>revString</strong> array is then passed into the <strong>displayString</strong> function.
+                    </p>
+                    <h5>displayString</h5>
+                    <p>
+                        displayString takes in one parameter (revString). The variable <strong>revString</strong> is an array that holds
+                        the value of the newly instituted string of <strong>userString</strong> that was implemented in the ealier
+                        mentioned for loop.
+                        To write our message to the page we will use <strong>getElementById</strong> grabbing the "msg" Id with the
+                        .innerHTML property to return that HTML content. We then assign that content with the message we
+                        wish to present to the user by use of a string literal that holds the value of the <strong>revString</strong>
+                        array. Finally we unhide our alert message we hid earlier in the <strong>getValue</strong> function, in order to
+                        do so we will <strong>getElementById</strong> once more but instead of adding to the classList,
+                        we will remove from it the "invisible" Id that was added earlier to expose our generated message
+                        to the user.
+
+                    </p>
                 </div>
             </div>
         </div>
     </main>
     <!-- footer section -->
-    <footer class="footer mt-auto py-3">
+    <footer class="footer mt-auto py-3 bg-black">
         <div class="container-fluid ">
             <div class="row row-cols-1 row-cols-lg-3 gy-2">
                 <div class="col  order-last order-lg-first text-light">
                     <div><span class="text-muted">&copy;2021</span> Vic Manuel Ortiz | vicmo616@gmail.com</div>
                 </div>
-                <div class="col align-items-center justify-content-start justify-content-lg-center">
-                    <!-- <img src="" alt="Vic Manuel Ortiz Logo" height="24"> -->
+                <div class="col align-items-center d-flex justify-content-center justify-content-lg-center ml-5">
+                    <img src="img/favicon.ico" alt="Vic Manuel Ortiz Logo">
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://github.com/vicmo616/"><i
+                                    class="fab fa-github fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://www.linkedin.com/"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
-                        </div>
+                        <!-- <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
+                        </div> -->
                     </div>
                 </div>
             </div>
